@@ -5,9 +5,10 @@ const {options} = require('../helpers/pie-chart-options.helper')
 const { getMemoryUsage } = require('../services/memory.service')
 
 let donutChart = null;
-
+let chartPercentageSpan = null;
 
 const renderChart = async () => {
+    chartPercentageSpan = document.getElementById('memoryUsagePercentage')
     await initChart()
     await rerenderChart()
 }
@@ -27,6 +28,7 @@ const rerenderChart = async () => {
         getPercentageColor(usedPercentage),
         'rgb(255, 255, 255)',
     ]
+    chartPercentageSpan.innerHTML = `${(usedPercentage).toFixed()}%`
     donutChart.update();
     setTimeout(() => {
         rerenderChart()

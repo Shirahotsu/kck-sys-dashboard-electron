@@ -5,9 +5,10 @@ const {options} = require('../helpers/pie-chart-options.helper')
 const {getCpuUsage} = require('../services/cpu.service')
 
 let donutChart = null;
-
+let chartPercentageSpan = null;
 
 const renderChart = async () => {
+    chartPercentageSpan = document.getElementById('cpuUsagePercentage')
     await initChart()
     await rerenderChart()
 }
@@ -28,6 +29,7 @@ const rerenderChart = async () => {
         'rgb(255, 255, 255)',
     ]
     donutChart.update();
+    chartPercentageSpan.innerHTML = `${cpuUsage.toFixed()}%`
     setTimeout(() => {
         rerenderChart()
     }, 1000)

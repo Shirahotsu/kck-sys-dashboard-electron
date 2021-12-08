@@ -5,9 +5,10 @@ const {options} = require('../helpers/pie-chart-options.helper')
 const { getDiskUsage } = require('../services/disk.service')
 
 let donutChart = null;
-
+let chartPercentageSpan = null;
 
 const renderChart = async () => {
+    chartPercentageSpan = document.getElementById('diskUsagePercentage')
     await initChart()
     await rerenderChart()
 }
@@ -26,6 +27,7 @@ const rerenderChart = async () => {
         getPercentageColor(usedPercentage),
         'rgb(255, 255, 255)',
     ]
+    chartPercentageSpan.innerHTML = `${parseInt(usedPercentage).toFixed()}%`
     donutChart.update();
     setTimeout(() => {
         rerenderChart()

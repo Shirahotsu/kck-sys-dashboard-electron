@@ -8,17 +8,40 @@
     <title>Hello World!</title>
   </head>
   <body>
+  <main>
+
     <div class="pie-charts-container">
       <div class="pie-chart-container">
         <canvas id="cpuUsage" ></canvas>
+        <div class="pie-chart-percentage-container">
+          <span id="cpuUsagePercentage"></span>
+        </div>
       </div>
+
       <div class="pie-chart-container">
         <canvas id="memoryUsage" ></canvas>
+        <div class="pie-chart-percentage-container">
+          <span id="memoryUsagePercentage"></span>
+        </div>
       </div>
+
       <div class="pie-chart-container">
         <canvas id="diskUsage" ></canvas>
+        <div class="pie-chart-percentage-container">
+          <span id="diskUsagePercentage"></span>
+        </div>
       </div>
     </div>
+
+    <div id="basicInfo" class="basic-info-container">
+
+    </div>
+
+
+  </main>
+
+
+
     <script src="./renderer.js"></script>
   </body>
 </html>
