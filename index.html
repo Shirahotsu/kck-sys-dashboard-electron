@@ -1,47 +1,61 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
+<head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link href="./styles.css" rel="stylesheet">
     <title>Hello World!</title>
-  </head>
-  <body>
-  <main>
+</head>
+<body>
+<main>
 
     <div class="pie-charts-container">
-      <div class="pie-chart-container">
-        <canvas id="cpuUsage" ></canvas>
-        <div class="pie-chart-percentage-container">
-          <span id="cpuUsagePercentage"></span>
+        <div class="pie-chart-container">
+            <canvas id="cpuUsage"></canvas>
+            <div class="pie-chart-percentage-container">
+                <span id="cpuUsagePercentage"></span>
+            </div>
+            <div class="pie-chart-title">
+                CPU
+                <img class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
+            </div>
         </div>
-      </div>
 
-      <div class="pie-chart-container">
-        <canvas id="memoryUsage" ></canvas>
-        <div class="pie-chart-percentage-container">
-          <span id="memoryUsagePercentage"></span>
+        <div class="pie-chart-container">
+            <canvas id="memoryUsage"></canvas>
+            <div class="pie-chart-percentage-container">
+                <span id="memoryUsagePercentage"></span>
+            </div>
+            <div class="pie-chart-title">
+                RAM
+                <img class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
+            </div>
         </div>
-      </div>
 
-      <div class="pie-chart-container">
-        <canvas id="diskUsage" ></canvas>
-        <div class="pie-chart-percentage-container">
-          <span id="diskUsagePercentage"></span>
+        <div class="pie-chart-container">
+            <canvas id="diskUsage"></canvas>
+            <div class="pie-chart-percentage-container">
+                <span id="diskUsagePercentage"></span>
+            </div>
+            <div class="pie-chart-title">
+                DISK
+                <img class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div id="basicInfo" class="basic-info-container">
-
+    <div id="basicInfo" class="basic-info-container"></div>
+    <div class="dynamic-view-container">
+        <div id="memoryDetails">
+            <canvas id="memoryDetailsChart"></canvas>
+        </div>
     </div>
 
 
-  </main>
+</main>
 
 
-
-    <script src="./renderer.js"></script>
-  </body>
+<script src="./renderer.js"></script>
+</body>
 </html>
