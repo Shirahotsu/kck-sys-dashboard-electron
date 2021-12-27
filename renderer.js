@@ -7,6 +7,7 @@ const {renderChart: renderCpuChart} = require('./components/cpu-usage-pie.compon
 const {renderChart: renderMemoryChart} = require('./components/memory-usage-pie.component')
 const {renderChart: renderDiskChart} = require('./components/disk-usage-pie.component')
 const {renderChart: renderMemoryDetails} = require('./components/memory-details.component')
+const {renderChart: renderDiskDetails} = require('./components/disk-details.component')
 const {renderBasicInfo} = require('./components/basic-info.component')
 window.addEventListener('DOMContentLoaded', () => {
     renderCpuChart()
@@ -14,4 +15,32 @@ window.addEventListener('DOMContentLoaded', () => {
     renderDiskChart()
     renderBasicInfo()
     renderMemoryDetails()
+    renderDiskDetails()
+})
+
+const cpuInfo = document.getElementById('cpuInfo')
+const memoryInfo = document.getElementById('memoryInfo')
+const diskInfo = document.getElementById('diskInfo')
+
+const cpuDetails = document.getElementById('cpuDetails')
+const memoryDetails = document.getElementById('memoryDetails')
+const diskDetails = document.getElementById('diskDetails')
+
+cpuInfo.addEventListener('click',()=>{
+    cpuDetails.style.display='block'
+    memoryDetails.style.display='none'
+    diskDetails.style.display='none'
+    console.log('cpuInfo')
+})
+memoryInfo.addEventListener('click',()=>{
+    cpuDetails.style.display='none'
+    memoryDetails.style.display='block'
+    diskDetails.style.display='none'
+    console.log('memoryInfo')
+})
+diskInfo.addEventListener('click',()=>{
+    cpuDetails.style.display='none'
+    memoryDetails.style.display='none'
+    diskDetails.style.display='block'
+    console.log('diskInfo')
 })

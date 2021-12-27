@@ -2,7 +2,7 @@ const {Chart} = require("chart.js");
 const {options} = require('../helpers/pie-chart-options.helper')
 const {getFixedTwoDecimalPlaces} = require('../helpers/getFixedTwoDecimalPlaces')
 
-const {getMemoryUsage} = require('../services/memory.service')
+const {getDiskUsage} = require('../services/disk.service')
 
 let chart = null;
 
@@ -13,21 +13,21 @@ const renderChart = async () => {
 
 
 const rerenderChart = async () => {
-    const {usedMemMb, freeMemMb, freeMemPercentage} = await getMemoryUsage();
-    chart.data.datasets[0].data = [usedMemMb]
-    chart.data.datasets[1].data = [freeMemMb]
-    chart.data.datasets[0].label = `Used ${getFixedTwoDecimalPlaces(usedMemMb)}MB (${100 - getFixedTwoDecimalPlaces(freeMemPercentage)}%)`
-    chart.data.datasets[1].label = `Free ${getFixedTwoDecimalPlaces(freeMemMb)}MB (${getFixedTwoDecimalPlaces(freeMemPercentage)}%)`
+    const {freePercentage, usedPercentage, freeGb, usedGb} = await getDiskUsage();
+    chart.data.datasets[0].data = [usedGb]
+    chart.data.datasets[1].data = [freeGb]
+    chart.data.datasets[0].label = `Used ${getFixedTwoDecimalPlaces(usedGb)}GB (${getFixedTwoDecimalPlaces(usedPercentage)}%)`
+    chart.data.datasets[1].label = `Free ${getFixedTwoDecimalPlaces(freeGb)}GB (${getFixedTwoDecimalPlaces(freePercentage)}%)`
 
     chart.update();
     setTimeout(() => {
         rerenderChart()
-    }, 1000)
+    }, 10000)
 }
 
 const initChart = async () => {
-    const {usedMemMb, freeMemMb, freeMemPercentage} = await getMemoryUsage();
-    const ctx = document.getElementById('memoryDetailsChart').getContext('2d');
+    const {freePercentage, usedPercentage, freeGb, usedGb} = await getDiskUsage();
+    const ctx = document.getElementById('diskDetailsChart').getContext('2d');
     chart = new Chart(
         ctx,
         {
@@ -35,16 +35,16 @@ const initChart = async () => {
             data: {
                 labels: [' '],
                 datasets: [{
-                    label: `Used ${getFixedTwoDecimalPlaces(usedMemMb)}MB (${100 - getFixedTwoDecimalPlaces(freeMemPercentage)}%)`,
-                    data: [usedMemMb],
+                    label: `Used ${getFixedTwoDecimalPlaces(usedGb)}GB (${getFixedTwoDecimalPlaces(usedPercentage)}%)`,
+                    data: [usedGb],
                     backgroundColor: [
                         '#ffc107',
                     ],
                     borderWidth: 0,
                 },
                     {
-                        label: `Free ${getFixedTwoDecimalPlaces(freeMemMb)}MB (${getFixedTwoDecimalPlaces(freeMemPercentage)}%)`,
-                        data: [freeMemMb],
+                        label: `Free ${getFixedTwoDecimalPlaces(freeGb)}GB (${getFixedTwoDecimalPlaces(freePercentage)}%)`,
+                        data: [freeGb],
                         backgroundColor: [
                             '#4caf50',
                         ],

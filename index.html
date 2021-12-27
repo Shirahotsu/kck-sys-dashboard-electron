@@ -18,7 +18,7 @@
             </div>
             <div class="pie-chart-title">
                 CPU
-                <img class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
+                <img id="cpuInfo" class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             </div>
             <div class="pie-chart-title">
                 RAM
-                <img class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
+                <img id="memoryInfo" class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
             </div>
         </div>
 
@@ -40,15 +40,22 @@
             </div>
             <div class="pie-chart-title">
                 DISK
-                <img class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
+                <img id="diskInfo" class="pie-chart-info-button" src="./assets/info.svg" alt="info"/>
             </div>
         </div>
     </div>
 
     <div id="basicInfo" class="basic-info-container"></div>
+
     <div class="dynamic-view-container">
+        <div id="cpuDetails">
+            <canvas id="cpuDetailsChart"></canvas>
+        </div>
         <div id="memoryDetails">
             <canvas id="memoryDetailsChart"></canvas>
+        </div>
+        <div id="diskDetails">
+            <canvas id="diskDetailsChart"></canvas>
         </div>
     </div>
 

@@ -14,7 +14,7 @@ const initReloadingBasicInfoData = async () => {
     })
 }
 
-let isConnected = false
+let isConnected = true
 const reloadBasicInfoData = (operatingSystem) =>{
     // TODO uncomment on review
     // isConnected = await getIsInternetConnected()

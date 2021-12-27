@@ -76,3 +76,12 @@ main{
     width: 80%;
     margin-top: 50px;
 }
+#cpuDetails{
+    display: none;
+}
+#memoryDetails{
+    display: none;
+}
+#diskDetails{
+    display: block;
+}
