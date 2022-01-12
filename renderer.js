@@ -8,6 +8,7 @@ const {renderChart: renderMemoryChart} = require('./components/memory-usage-pie.
 const {renderChart: renderDiskChart} = require('./components/disk-usage-pie.component')
 const {renderChart: renderMemoryDetails} = require('./components/memory-details.component')
 const {renderChart: renderDiskDetails} = require('./components/disk-details.component')
+const {renderChart: renderCpuDetails} = require('./components/cpu-details.component')
 const {renderBasicInfo} = require('./components/basic-info.component')
 window.addEventListener('DOMContentLoaded', () => {
     renderCpuChart()
@@ -16,6 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     renderBasicInfo()
     renderMemoryDetails()
     renderDiskDetails()
+    renderCpuDetails()
 })
 
 const cpuInfo = document.getElementById('cpuInfo')
