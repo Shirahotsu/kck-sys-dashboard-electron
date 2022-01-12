@@ -76,6 +76,13 @@ main{
     width: 80%;
     margin-top: 50px;
 }
+.is-connected-container{
+    display: flex;
+    align-items: baseline;
+}
+.is-connected-container svg{
+    margin-left: 8px;
+}
 #cpuDetails{
     display: none;
 }
